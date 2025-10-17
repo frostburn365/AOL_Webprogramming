@@ -11,7 +11,7 @@
         <!-- Navbar --> 
         <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
             <div class="container-fluid"> 
-                <a class="navbar-brand d-flex align-items-center" href="index.html"> 
+                <a class="navbar-brand d-flex align-items-center" href="home"> 
                     <img src="{{ asset('assets/Logo.png.jpg') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top me-2"> 
                     MindWell 
                 </a> 
@@ -46,7 +46,7 @@
                     <button type="submit" class="btn btn-primary w-100" style="--bs-btn-bg:#4F46E5;--bs-btn-border-color:#4F46E5"> Log in </button> 
                     <div class="text-center mt-3"> 
                         <small>Already have an account? 
-                            <a href="#">Log in</a>
+                            <a href="Login">Log in</a>
                         </small> 
                     </div> 
                 </form> 

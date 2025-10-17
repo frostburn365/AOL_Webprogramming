@@ -11,7 +11,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
   <div class="container-fluid">
-    <a class="navbar-brand d-flex align-items-center" href="#">
+    <a class="navbar-brand d-flex align-items-center" href="home">
       <img src="{{ asset('assets/Logo.png.jpg') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top me-2">
       MindWell
     </a>
@@ -27,8 +27,8 @@
         <li class="nav-item"><a class="nav-link" href="#">How it works</a></li>
       </ul>
       <div class="d-flex">
-        <a href="login.html" class="btn btn-light me-2">Log in</a>
-        <a href="#" class="btn btn-primary" style="--bs-btn-bg:#4F46E5;--bs-btn-border-color:#4F46E5">Sign up</a>
+        <a href="Login" class="btn btn-light me-2">Log in</a>
+        <a href="SignUp" class="btn btn-primary" style="--bs-btn-bg:#4F46E5;--bs-btn-border-color:#4F46E5">Sign up</a>
       </div>
     </div>
   </div>
@@ -49,6 +49,6 @@
   </div>
 </section>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
