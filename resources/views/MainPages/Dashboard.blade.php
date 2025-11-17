@@ -22,19 +22,19 @@
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-          <a href="#" class="nav-link active" aria-current="page">
+          <a href="/Dashboard" class="nav-link active" aria-current="page">
             <i class="bi bi-grid me-2"></i>
             Dashboard
           </a>
         </li>
         <li>
-          <a href="#" class="nav-link text-dark">
+          <a href="/Journal" class="nav-link text-dark">
             <i class="bi bi-journal-bookmark me-2"></i>
             Journal
           </a>
         </li>
         <li>
-          <a href="#" class="nav-link text-dark">
+          <a href="/Community" class="nav-link text-dark">
             <i class="bi bi-people me-2"></i>
             Community
           </a>

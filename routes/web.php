@@ -6,8 +6,16 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/home', function () {
-    return view('home');
+Route::get('/Home', function () {
+    return view('PreLoginPages.home');
+});
+
+Route::get('/Mission', function () {
+    return view('PreLoginPages.OurMission');
+});
+
+Route::get('/How', function () {
+    return view('PreLoginPages.HowItWorks');
 });
 
 Route::get('/Login', function () {
@@ -19,5 +27,15 @@ Route::get('/SignUp', function () {
 });
 
 Route::get('/Dashboard', function () {
-    return view('Dashboard');
+    return view('MainPages.Dashboard');
 });
+
+Route::get('/Journal', function () {
+    return view('MainPages.Journal');
+});
+
+Route::get('/Community', function () {
+    return view('MainPages.Community');
+});
+
+
