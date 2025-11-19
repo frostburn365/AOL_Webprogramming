@@ -1,14 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
-    return view('home');
+    return view('PreLoginPages.home');
 });
 
 Route::get('/Home', function () {
     return view('PreLoginPages.home');
 });
+
+Route::view('/SignUp', 'SignUp')->name('SignUp');
+Route::post('/SignUp', [AuthController::class, 'SignUp']);
 
 Route::get('/Mission', function () {
     return view('PreLoginPages.OurMission');
@@ -22,9 +26,6 @@ Route::get('/Login', function () {
     return view('Login');
 });
 
-Route::get('/SignUp', function () {
-    return view('SignUp');
-});
 
 Route::get('/Dashboard', function () {
     return view('MainPages.Dashboard');

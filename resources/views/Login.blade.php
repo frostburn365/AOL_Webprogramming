@@ -25,6 +25,11 @@
                 <h3 class="text-center mb-4">Log in</h3> 
                 <form> 
                     <div class="mb-3"> 
+                        <label for="username" class="form-label">Username</label> 
+                        <input type="text" class="form-control" id="username" placeholder="Enter your Username"> 
+                    </div> 
+
+                    <div class="mb-3"> 
                         <label for="email" class="form-label">Email address</label> 
                         <input type="email" class="form-control" id="email" placeholder="Enter your email"> 
                     </div> 

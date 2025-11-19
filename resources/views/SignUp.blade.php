@@ -22,31 +22,53 @@
         <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;"> 
             <div class="card shadow-sm p-4" style="width: 100%; max-width: 400px;"> 
                 <h3 class="text-center mb-4">Sign Up</h3> 
-                <form> 
+                <form method="post" action="{{ route('SignUp') }}"> 
+                    @csrf    
+
+                    <div class="mb-3"> 
+                        <label for="username" class="form-label">Username</label> 
+                        <input type="text" name="username" placeholder="Enter your Username" value="{{ old('username') }}" class="form-control @error('username') border-danger-subtle @enderror"> 
+                        @error('username')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
+                    </div> 
+
                     <div class="mb-3"> 
                         <label for="email" class="form-label">Email address</label> 
-                        <input type="email" class="form-control" id="email" placeholder="Enter your email"> 
+                        <input type="text" name="email" placeholder="Enter your email" value="{{ old('email') }}" class="form-control @error('email') border-danger-subtle @enderror"> 
+                        @error('email')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
                     </div> 
 
                     <div class="mb-3"> 
                         <label for="Phonenumber" class="form-label">Phonenumber</label> 
-                        <input type="number" class="form-control" id="PhonenNum" placeholder="Enter your Phonenumber" min="0"> 
+                        <input type="number" name="Phonenumber" placeholder="Enter your Phonenumber" value="{{ old('Phonenumber') }}" class="form-control @error('Phonenumber') border-danger-subtle @enderror"> 
+                        @error('Phonenumber')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
                     </div> 
 
                     <div class="mb-3"> 
                         <label for="password" class="form-label">Password</label> 
-                        <input type="password" class="form-control" id="Password" placeholder="Enter your password"> 
+                        <input type="password" name="password" placeholder="Enter your password" class="form-control @error('password') border-danger-subtle @enderror"> 
+                        @error('password')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
                     </div> 
 
                     <div class="mb-3"> 
-                        <label for="ConfPassword" class="form-label">Confirm Password</label>  
-                        <input type="Password" class="form-control" id="ConfPassword" placeholder="Confirm your password"> 
+                        <label for="password_confirmation" class="form-label">Confirm Password</label>  
+                        <input type="password" name="password_confirmation" placeholder="Confirm your password" class="form-control @error('password') border-danger-subtle @enderror"> 
+                        @error('password')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
                     </div> 
 
-                    <button type="submit" class="btn btn-primary w-100" style="--bs-btn-bg:#4F46E5;--bs-btn-border-color:#4F46E5"> Log in </button> 
+                    <button type="submit" class="btn btn-primary w-100" style="--bs-btn-bg:#4F46E5;--bs-btn-border-color:#4F46E5"> Sign up </button> 
                     <div class="text-center mt-3"> 
                         <small>Already have an account? 
-                            <a href="Login">Log in</a>
+                            <a href="Login">Sign up</a>
                         </small> 
                     </div> 
                 </form> 
