@@ -9,54 +9,78 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    .sidebar a, .profile-text {
+      color: black
+    }
+    
+    .sidebar-hover:hover{
+      background: #eef2ff;
+      color: #4f46e5;
+    }
+
+    .active-link{
+      background: #eef2ff;
+      color: #4f46e5 !important;
+    }
+
+    .profile{
+      color: #4f46e5 !important;
+    }
+  </style>
+
 </head>
 <body class="bg-light">
 
   <div class="d-flex">
     <!-- Sidebar -->
     <div class="d-flex flex-column flex-shrink-0 p-3 bg-white border-end" style="width: 240px; height: 100vh;">
-      <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
-        <i class="bi bi-person-circle fs-4 text-primary me-2"></i>
-        <span class="fs-5 fw-semibold">MindWell</span>
+      <a href="#" class="d-flex align-items-center justify-content-center mb-3 mb-md-0 text-decoration-none">
+        <img src="{{ asset('assets/Logo.png.jpg') }}" style="height: 1.5em; width: 1.5em" alt="">
+        <span class="fs-5 fw-semibold profile-text">MindWell</span>
       </a>
       <hr>
-      <ul class="nav nav-pills flex-column mb-auto">
-        <li class="nav-item">
-          <a href="/Dashboard" class="nav-link active" aria-current="page">
+      <ul class="nav nav-pills flex-column mb-auto sidebar">
+        <li >
+          <a href="/Dashboard" class="nav-link active-link">
             <i class="bi bi-grid me-2"></i>
             Dashboard
           </a>
         </li>
         <li>
-          <a href="/Journal" class="nav-link text-dark">
+          <a href="/Journal" class="nav-link sidebar-hover">
             <i class="bi bi-journal-bookmark me-2"></i>
             Journal
           </a>
         </li>
         <li>
-          <a href="/Community" class="nav-link text-dark">
+          <a href="/Community" class="nav-link sidebar-hover">
             <i class="bi bi-people me-2"></i>
             Community
           </a>
         </li>
         <li>
-          <a href="#" class="nav-link text-dark">
+          <a href="/Insights" class="nav-link sidebar-hover">
             <i class="bi bi-bar-chart-line me-2"></i>
             Insights
           </a>
         </li>
       </ul>
       <hr>
-      <div>
-        <a href="#" class="nav-link text-dark">
-          <i class="bi bi-gear me-2"></i>
-          Settings
-        </a>
-        <a href="#" class="nav-link text-dark">
-          <i class="bi bi-box-arrow-right me-2"></i>
-          Logout
-        </a>
-      </div>
+      <ul class="nav nav-pills flex-column sidebar">
+        <li>
+          <a href="#" class="nav-link sidebar-hover">
+            <i class="bi bi-gear me-2"></i>
+            Settings
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link sidebar-hover">
+            <i class="bi bi-box-arrow-right me-2"></i>
+            Logout
+          </a>
+        </li>
+      </ul>
     </div>
 
     <!-- Main Content -->

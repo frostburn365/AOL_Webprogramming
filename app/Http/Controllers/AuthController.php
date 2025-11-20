@@ -14,6 +14,6 @@ class AuthController extends Controller
             'password' => ['required', 'min:3','confirmed']
        ]);
 
-        dd('ok');
+       return view('MainPages.Dashboard');
     }
 }

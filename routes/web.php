@@ -26,9 +26,12 @@ Route::get('/Login', function () {
     return view('Login');
 });
 
-
 Route::get('/Dashboard', function () {
     return view('MainPages.Dashboard');
+});
+
+Route::get('/Insights', function () {
+    return view('MainPages.Insights');
 });
 
 Route::get('/Journal', function () {
