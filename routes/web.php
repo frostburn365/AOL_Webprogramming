@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserAuthController;
 
 Route::get('/', function () {
     return view('PreLoginPages.home');
@@ -12,7 +12,7 @@ Route::get('/Home', function () {
 });
 
 Route::view('/SignUp', 'SignUp')->name('SignUp');
-Route::post('/SignUp', [AuthController::class, 'SignUp']);
+Route::post('/SignUp', [UserAuthController::class, 'SignUp']);
 
 Route::get('/Mission', function () {
     return view('PreLoginPages.OurMission');
@@ -28,7 +28,7 @@ Route::get('/Login', function () {
 
 Route::get('/Dashboard', function () {
     return view('MainPages.Dashboard');
-});
+})->name('Dashboard');
 
 Route::get('/Insights', function () {
     return view('MainPages.Insights');
