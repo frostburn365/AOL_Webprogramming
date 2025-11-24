@@ -14,16 +14,15 @@ Route::get('/Home', function () {
 Route::view('/SignUp', 'SignUp')->name('SignUp');
 Route::post('/SignUp', [UserAuthController::class, 'SignUp']);
 
+Route::view('/Login', 'Login')->name('Login');
+Route::post('/Login', [UserAuthController::class, 'Login']);
+
 Route::get('/Mission', function () {
     return view('PreLoginPages.OurMission');
 });
 
 Route::get('/How', function () {
     return view('PreLoginPages.HowItWorks');
-});
-
-Route::get('/Login', function () {
-    return view('Login');
 });
 
 Route::get('/Dashboard', function () {

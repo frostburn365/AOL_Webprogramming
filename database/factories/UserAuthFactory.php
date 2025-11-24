@@ -3,7 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\UserAuth>
  */
@@ -17,10 +18,11 @@ class UserAuthFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
+            'username' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'Phonenumber' => fake()->Phonenumber(),
-            'password' => static::$password ??= Hash::make('password'),
+            'Phonenumber' => fake()->numerify('##########'),
+            'password' => Hash::make('password'),
+            'remember_token' => NULL,
         ];
     }
 }

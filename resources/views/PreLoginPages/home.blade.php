@@ -47,8 +47,8 @@
             </ul>
 
             <div class="d-flex">
-                <a href="/Login" class="btn btn-outline-primary me-2">Log In</a>
-                <a href="/SignUp" class="btn btn-primary">Sign Up</a>
+                <a href="{{ route('Login') }}" class="btn btn-outline-primary me-2">Log In</a>
+                <a href="{{ route('SignUp') }}" class="btn btn-primary">Sign Up</a>
             </div>
         </div>
     </div>
