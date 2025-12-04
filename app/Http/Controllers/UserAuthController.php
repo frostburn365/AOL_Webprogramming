@@ -34,6 +34,7 @@ class UserAuthController extends Controller
 
        //Login
        Auth::login($user);
+       session(['AccessLevel' => 'user']);
 
        //Redirect
        return redirect()->route('Dashboard');
@@ -45,6 +46,9 @@ class UserAuthController extends Controller
             'password' => ['required']
         ]);
 
+        session(['AccessLevel' => 'user']);
+
+
       //attempt 1: possible theory as to why this 'dd' line returns false, the 'Auth' being called might be referring to something else
       //dd(Auth::attempt($validate, $request->Remember));
       //attempt 2: the model used doesn't extend Laravel's required class for authentication, go check UserAuth.php and config/auth.php
@@ -54,12 +58,19 @@ class UserAuthController extends Controller
       //attempt 4: it works!, this time when 'remember me' checkbox is on OR of, fixed the db
    
        if(Auth::attempt($validate, $request->Remember)){
-            return redirect()->route('Dashboard');
+            return redirect()->intended('Dashboard');
        } else {
             return back()->withErrors([
                 'failed' => 'The provided credentials are not within our database'
             ]);
        }
+    }
+
+    public function Logout(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
     
     /**

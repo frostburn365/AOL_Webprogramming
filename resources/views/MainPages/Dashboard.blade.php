@@ -35,52 +35,30 @@
   <div class="d-flex">
     <!-- Sidebar -->
     <div class="d-flex flex-column flex-shrink-0 p-3 bg-white border-end" style="width: 240px; height: 100vh;">
-      <a href="#" class="d-flex align-items-center justify-content-center mb-3 mb-md-0 text-decoration-none">
+      <a href="#" class="d-flex align-items-center justify-content-center mb-3 text-decoration-none">
         <img src="{{ asset('assets/Logo.png.jpg') }}" style="height: 1.5em; width: 1.5em" alt="">
-        <span class="fs-5 fw-semibold profile-text">MindWell</span>
+        <span class="fs-5 fw-semibold ms-2 profile-text">MindWell</span>
       </a>
       <hr>
+      
       <ul class="nav nav-pills flex-column mb-auto sidebar">
-        <li >
-          <a href="/Dashboard" class="nav-link active-link">
-            <i class="bi bi-grid me-2"></i>
-            Dashboard
-          </a>
-        </li>
-        <li>
-          <a href="/Journal" class="nav-link sidebar-hover">
-            <i class="bi bi-journal-bookmark me-2"></i>
-            Journal
-          </a>
-        </li>
-        <li>
-          <a href="/Community" class="nav-link sidebar-hover">
-            <i class="bi bi-people me-2"></i>
-            Community
-          </a>
-        </li>
-        <li>
-          <a href="/Insights" class="nav-link sidebar-hover">
-            <i class="bi bi-bar-chart-line me-2"></i>
-            Insights
-          </a>
-        </li>
+        <li><a href="/Dashboard" class="nav-link active-link"><i class="bi bi-grid me-2"></i>Dashboard</a></li>
+        <li><a href="/Journal" class="nav-link sidebar-hover"><i class="bi bi-journal-bookmark me-2"></i>Journal</a></li>
+        <li><a href="/Community" class="nav-link sidebar-hover"><i class="bi bi-people me-2"></i>Community</a></li>
+        <li><a href="/Insights" class="nav-link sidebar-hover"><i class="bi bi-bar-chart-line me-2"></i>Insights</a></li>
       </ul>
+    
       <hr>
       <ul class="nav nav-pills flex-column sidebar">
+        <li><a href="#" class="nav-link sidebar-hover"><i class="bi bi-gear me-2"></i>Settings</a></li>
         <li>
-          <a href="#" class="nav-link sidebar-hover">
-            <i class="bi bi-gear me-2"></i>
-            Settings
-          </a>
-        </li>
-        <li>
-          <a href="#" class="nav-link sidebar-hover">
-            <i class="bi bi-box-arrow-right me-2"></i>
-            Logout
-          </a>
+          <form action="{{ route('Logout') }}" method="post">
+            @csrf
+            <button class="nav-link text-bg-danger"><i class="bi bi-box-arrow-right me-2"></i>Logout</a>  
+          </form>
         </li>
       </ul>
+
     </div>
 
     <!-- Main Content -->

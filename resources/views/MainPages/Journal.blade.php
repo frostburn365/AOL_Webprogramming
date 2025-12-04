@@ -50,41 +50,17 @@
       <hr>
 
       <ul class="nav nav-pills flex-column mb-auto sidebar">
-        <li>
-          <a href="/Dashboard" class="nav-link sidebar-hover">
-            <i class="bi bi-grid me-2"></i> Dashboard
-          </a>
-        </li>
-        <li>
-          <a href="/Journal" class="nav-link active-link">
-            <i class="bi bi-journal-bookmark me-2"></i> Journal
-          </a>
-        </li>
-        <li>
-          <a href="/Community" class="nav-link sidebar-hover">
-            <i class="bi bi-people me-2"></i> Community
-          </a>
-        </li>
-        <li>
-          <a href="/Insights" class="nav-link sidebar-hover">
-            <i class="bi bi-bar-chart-line me-2"></i> Insights
-          </a>
-        </li>
+        <li><a href="/Dashboard" class="nav-link sidebar-hover"><i class="bi bi-grid me-2"></i>Dashboard</a></li>
+        <li><a href="/Journal" class="nav-link active-link"><i class="bi bi-journal-bookmark me-2"></i>Journal</a></li>
+        <li><a href="/Community" class="nav-link sidebar-hover"><i class="bi bi-people me-2"></i>Community</a></li>
+        <li><a href="/Insights" class="nav-link sidebar-hover"><i class="bi bi-bar-chart-line me-2"></i>Insights</a></li>
       </ul>
 
       <hr>
 
       <ul class="nav nav-pills flex-column sidebar">
-        <li>
-          <a href="#" class="nav-link sidebar-hover">
-            <i class="bi bi-gear me-2"></i> Settings
-          </a>
-        </li>
-        <li>
-          <a href="#" class="nav-link sidebar-hover">
-            <i class="bi bi-box-arrow-right me-2"></i> Logout
-          </a>
-        </li>
+        <li><a href="#" class="nav-link sidebar-hover"><i class="bi bi-gear me-2"></i>Settings</a></li>
+        <li><a href="#" class="nav-link sidebar-hover"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
       </ul>
     </div>
 
