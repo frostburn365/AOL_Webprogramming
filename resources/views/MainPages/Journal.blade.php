@@ -34,12 +34,56 @@
       border-radius: 10px;
       padding: 15px;
     }
+
+    .btn-custom-purple {
+        background-color: #4f46e5;
+        border-color: #4f46e5;
+        color: white;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .btn-custom-purple:hover {
+        background-color: #6a5acd; 
+        border-color: #6a5acd;
+        color: white;
+    }
+
+    .btn-custom-purple:focus,
+    .btn-custom-purple:active {
+        background-color: #6a5acd !important;
+        border-color: #6a5acd !important;
+        box-shadow: 0 0 0 0.25rem rgba(123, 104, 238, 0.5);
+    }
   </style>
 </head>
 
 <body class="bg-light">
 
   <div class="d-flex">
+
+    {{-- Slided Form --}}
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="journalOffcanvas" aria-labelledby="journalOffcanvasLabel">
+      <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="journalOffcanvasLabel">New Journal Entry</h5>
+          </div>
+      <div class="offcanvas-body">
+          <p class="text-muted">What's on your mind? Write it down, it's safe here.</p>
+
+          <form id="journalForm">
+              <div class="mb-3">
+                  <label for="title" class="form-label">Title</label>
+                  <input type="text" class="form-control" id="titleInput" placeholder="e.g., A Good Day!">
+              </div>
+              <div class="mb-3">
+                  <label for="content" class="form-label">Content</label>
+                  <textarea class="form-control" id="contentInput" rows="10" placeholder="Describe your day!"></textarea>
+              </div>
+                <button type="submit" class="btn btn-custom-purple mt-3">
+                    Save Entry
+                </button>
+            </form>
+        </div>
+    </div>
 
     <!-- Sidebar -->
     <div class="d-flex flex-column flex-shrink-0 p-3 bg-white border-end" style="width: 240px; height: 100vh;">
@@ -69,7 +113,7 @@
 
       <div class="d-flex justify-content-between align-items-center mb-4">
         <h4 class="fw-bold">My Journal</h4>
-        <a href="#" class="btn btn-primary">
+        <a class="btn btn-custom-purple" type="button" data-bs-toggle="offcanvas" data-bs-target="#journalOffcanvas" aria-controls="journalOffcanvas" id="openJournalButton">
           <i class="bi bi-plus-lg me-1"></i> New Entry
         </a>
       </div>

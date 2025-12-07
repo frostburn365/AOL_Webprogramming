@@ -9,14 +9,31 @@
 
     <body class="bg-light"> 
         <!-- Navbar --> 
-        <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
-            <div class="container-fluid"> 
-                <a class="navbar-brand d-flex align-items-center" href="home"> 
+        <nav class="navbar navbar-expand-lg bg-white shadow-sm py-3">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="Home"> 
                     <img src="{{ asset('assets/Logo.png.jpg') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top me-2"> 
                     MindWell 
                 </a> 
-            </div> 
-        </nav> 
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navMenu">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item mx-2"><a class="nav-link" href="/Home">Home</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="/Mission">Our Mission</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="/How">How It Works</a></li>
+                    </ul>
+
+                    <div class="d-flex">
+                        <a href="{{ route('Login') }}" class="btn btn-outline-primary me-2">Log In</a>
+                        <a href="{{ route('SignUp') }}" class="btn btn-primary">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
         
         <!-- Sign Up Form --> 
         <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;"> 
