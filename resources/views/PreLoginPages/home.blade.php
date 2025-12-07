@@ -54,6 +54,7 @@
     </div>
 </nav>
 
+@guest
 <!-- HERO -->
 <section class="text-center py-5">
     <div class="container">
@@ -69,7 +70,7 @@
 <section class="py-5">
     <div class="container text-center">
         <h4 class="fw-bold mb-4">Core Features</h4>
-
+        
         <div class="row justify-content-center g-4">
             <div class="col-md-4">
                 <div class="feature-card">
@@ -78,7 +79,7 @@
                     <p class="text-muted">A secure, encrypted space for your thoughts. No one sees it but you.</p>
                 </div>
             </div>
-
+            
             <div class="col-md-4">
                 <div class="feature-card">
                     <div class="icon">👥</div>
@@ -86,7 +87,7 @@
                     <p class="text-muted">Share experiences and find support without revealing your identity.</p>
                 </div>
             </div>
-
+            
             <div class="col-md-4">
                 <div class="feature-card">
                     <div class="icon">📈</div>
@@ -102,7 +103,7 @@
 <section class="py-5">
     <div class="container text-center">
         <h4 class="fw-bold mb-4">What Our Community Says</h4>
-
+        
         <div class="row justify-content-center g-4">
             <div class="col-md-4">
                 <div class="testimonial-card p-4">
@@ -112,7 +113,7 @@
                     </p>
                 </div>
             </div>
-
+            
             <div class="col-md-4">
                 <div class="testimonial-card p-4">
                     <h6 class="fw-bold">Jane Smith</h6>
@@ -121,7 +122,7 @@
                     </p>
                 </div>
             </div>
-
+            
             <div class="col-md-4">
                 <div class="testimonial-card p-4">
                     <h6 class="fw-bold">Sam Wilson</h6>
@@ -133,6 +134,7 @@
         </div>
     </div>
 </section>
+@endguest
 
 <!-- FOOTER -->
 <footer class="bg-white text-center py-3 border-top">

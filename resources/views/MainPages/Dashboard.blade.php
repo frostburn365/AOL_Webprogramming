@@ -64,7 +64,7 @@
     <!-- Main Content -->
     <div class="container-fluid p-4">
       <h4 class="fw-bold mb-4">Dashboard</h4>
-
+      
       <div class="row g-3">
         <!-- Mood Tracker -->
         <div class="col-md-4">
@@ -86,7 +86,7 @@
             </div>
           </div>
         </div>
-
+        
         <!-- Journal -->
         <div class="col-md-4">
           <div class="card text-center p-3 h-100 shadow-sm">
@@ -95,7 +95,7 @@
             <p class="text-muted small mb-0">Clear your mind</p>
           </div>
         </div>
-
+        
         <!-- Community -->
         <div class="col-md-4">
           <div class="card text-center p-3 h-100 shadow-sm">
@@ -107,7 +107,7 @@
       </div>
     </div>
   </div>
-
+  
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
