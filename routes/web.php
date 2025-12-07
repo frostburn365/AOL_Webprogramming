@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserAuthController;
+use App\Http\Controllers\JournalEntryController;
 use App\Http\Middleware\EnsureUserAuth;
 
 
@@ -42,6 +43,8 @@ Route::middleware(EnsureUserAuth::class)->group(function () {
     Route::get('/Journal', function () {
         return view('MainPages.Journal');
     });
+
+    Route::resource('Journal', JournalEntryController::class);
     
     Route::get('/Community', function () {
         return view('MainPages.Community');
