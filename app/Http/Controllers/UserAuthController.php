@@ -2,42 +2,46 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UserAuth;
 use App\Http\Requests\StoreUserAuthRequest;
 use App\Http\Requests\UpdateUserAuthRequest;
-use Illuminate\Support\Facades\Hash;
+use App\Models\JournalEntry;
+use App\Models\UserAuth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserAuthController extends Controller
 {
     public function SignUp(Request $request){
-        //Test user
-        //Dummy621
-        //AC6@gmail.com
-        //08111196
-        //C0ralSurg3
-
-        //validation
-       $validate = $request->validate([
+        
+        // validation
+        $validate = $request->validate([
             'username' => ['required'], 
             'email' => ['required', 'email'],
             'Phonenumber' => ['required'],
             'password' => ['required', 'min:3','confirmed']
-       ]);
+        ]);
 
-        //password hashing
+        // password hashing
         $validate['password'] = Hash::make($validate['password']);
 
-       //Register to db
-       $user = UserAuth::create($validate);
+        // register to db
+        $user = UserAuth::create($validate);
 
-       //Login
-       Auth::login($user);
-       session(['AccessLevel' => 'user']);
+        // make default journal entry as an example
+        JournalEntry::create([
+            'user_id' => $user->id,
+            'title' => 'My First Journal Entry',
+            'content' => 'Welcome to your MindWell Journal! This is your private space to reflect on your day, track your feelings, and set personal goals. Delete or edit this entry to get started.',
+            'created_at' => now(),
+        ]);
 
-       //Redirect
-       return redirect()->route('Dashboard');
+        // login
+        Auth::login($user);
+        session(['AccessLevel' => 'user']);
+
+        // redirect
+        return redirect()->route('Dashboard');
     }
 
     public function Login(Request $request){

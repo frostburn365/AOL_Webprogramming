@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('journal_entries', function (Blueprint $table) {
             $table->id();
+            
+            $table->foreignId('user_id')
+                ->constrained('user_auths')
+                ->onDelete('cascade'); 
+            
             $table->string('title', 255);
             $table->text('content');
             $table->timestamps();
