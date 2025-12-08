@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\JournalEntryController;
+use App\Http\Controllers\CommunityPostsController;
 use App\Http\Middleware\EnsureUserAuth;
 
 
@@ -45,10 +46,9 @@ Route::middleware(EnsureUserAuth::class)->group(function () {
     });
 
     Route::resource('Journal', JournalEntryController::class);
-    
-    Route::get('/Community', function () {
-        return view('MainPages.Community');
-    });
+      
+    Route::get('/Community', [CommunityPostsController::class, 'index'])->name('Community');
+    Route::resource('community', CommunityPostsController::class);
     
     Route::post('/Logout', [UserAuthController::class, 'Logout'])->name('Logout');
 });

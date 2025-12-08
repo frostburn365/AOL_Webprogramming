@@ -46,29 +46,33 @@
 
   <div class="d-flex">
 
-    {{-- Slided Form --}}
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="journalOffcanvas" aria-labelledby="journalOffcanvasLabel">
+    {{-- Make/Edit Form --}}
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="CommunityOffcanvas" aria-labelledby="CommunityOffcanvasLabel">
       <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="journalOffcanvasLabel">New Post</h5>
-          </div>
+        {{-- title as ID --}}
+        <h5 class="offcanvas-title" id="CommunityOffcanvasLabel">New Post</h5>
+      </div>
       <div class="offcanvas-body">
-          <p class="text-muted">What's on your mind? Write it down, it's safe here.</p>
+        <p class="text-muted">What's on your mind? Write it down, it's safe here.</p>
 
-          <form id="journalForm">
-              <div class="mb-3">
-                  <label for="title" class="form-label">Title</label>
-                  <input type="text" class="form-control" id="titleInput" placeholder="e.g., A Good Day!">
-              </div>
-              <div class="mb-3">
-                  <label for="content" class="form-label">Content</label>
-                  <textarea class="form-control" id="contentInput" rows="10" placeholder="Describe your day!"></textarea>
-              </div>
-                <button type="submit" class="btn btn-custom-purple mt-3">
-                    Post!
-                </button>
-            </form>
-        </div>
+        <form id="CommunityForm" method="POST" action="{{ route('community.store') }}">
+          @csrf
+          {{-- hidden input will hold the PUT method IF we are editing --}}
+          <input type="hidden" name="_method" value="POST" id="formMethod"> 
+
+          <div class="mb-3">
+            <label for="contentInput" class="form-label">Content</label>
+            <textarea class="form-control" id="contentInput" name="content" rows="10" placeholder="Describe your day!"></textarea>
+          </div>
+                
+          <button type="submit" class="btn btn-custom-purple mt-3" id="saveButton">
+            Save Entry
+          </button>
+        </form>
+      </div>
     </div>
+
+ 
 
     <!-- Sidebar -->
     <div class="d-flex flex-column flex-shrink-0 p-3 bg-white border-end" style="width: 240px; height: 100vh;">
@@ -98,8 +102,8 @@
 
       <div class="d-flex justify-content-between align-items-center mb-4">
         <h4 class="fw-bold">Community</h4>
-        <a class="btn btn-custom-purple" type="button" data-bs-toggle="offcanvas" data-bs-target="#journalOffcanvas" aria-controls="journalOffcanvas" id="openJournalButton">
-          <i class="bi bi-plus-lg me-1"></i> New Post
+        <a class="btn btn-custom-purple" type="button" data-bs-toggle="offcanvas" data-bs-target="#CommunityOffcanvas" aria-controls="CommunityOffcanvas" id="openCommunityButton">
+          <i class="bi bi-plus-lg me-1"></i>New Post
         </a>
       </div>
 
@@ -111,7 +115,7 @@
       </ul>
 
       <!-- Post Card -->
-      <div class="card mb-3 shadow-sm">
+      {{-- <div class="card mb-3 shadow-sm">
         <div class="card-body">
           <h6 class="fw-semibold"><i class="bi bi-person-circle me-2"></i>Anonymous Fox</h6>
           <p class="text-muted small mb-2">Anyone else finding it hard to balance social life and studies? Looking for tips!</p>
@@ -131,8 +135,21 @@
             <span><i class="bi bi-chat-left-text me-1"></i>1 Comment</span>
           </div>
         </div>
-      </div>
+      </div> --}}
 
+      {{-- User posted content --}}
+      @forEach ($posts as $post)
+        <div class="card mb-3 shadow-sm">
+          <div class="card-body">
+            <h6 class="fw-semibold"><i class="bi bi-person-circle me-2"></i>{{$post->username}}</h6>
+            <p class="text-muted small mb-2">{{$post->content}}</p>
+            <div class="d-flex gap-3 text-muted small">
+              <span><i class="bi bi-hand-thumbs-up me-1"></i>15</span>
+              <span><i class="bi bi-chat-left-text me-1"></i>1 Comment</span>
+            </div>
+          </div>
+        </div>
+      @endforeach
     </div>
   </div>
 
