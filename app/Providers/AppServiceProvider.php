@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Artisan; // If you added this for migrations
+use Illuminate\Support\Facades\File;   // <--- THIS IS THE MISSING LINE
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,14 +21,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Only if you use 'storage:link' for public files.
-        if (env('VERCEL_URL')) {
-            // Define the storage path using the Vercel's writable /tmp directory
-            $this->app->useStoragePath(env('TEMP_DIR', '/tmp/storage')); 
-            
-            // Create the symbolic link dynamically if it doesn't exist
-            if (!File::exists(public_path('storage'))) {
-                File::link('/tmp/storage/app/public', public_path('storage'));
+        // ... (Your existing code here, including VERCEL/SQLite fixes)
+        
+        if (env('VERCEL_URL') && env('DB_CONNECTION') === 'mysql') {
+            $dbPath = env('DB_DATABASE', database_path('database.sqlite'));
+
+            if (!File::exists($dbPath)) { // Error occurs here without the 'use' statement
+                File::put($dbPath, '');
+                Artisan::call('migrate', ['--force' => true]);
             }
         }
     }
