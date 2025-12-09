@@ -20,6 +20,10 @@
     "APP_KEY": "base64:XsTDICtDaHc9bitezx0B2RD2gunzOp6C9olLA43xYh8=",
     "VIEW_COMPILED_PATH": "/tmp",
     "CACHE_DRIVER": "array",
-    "SESSION_DRIVER": "cookie"
+    "SESSION_DRIVER": "cookie",
+    "LOG_CHANNEL": "errorlog", 
+    "APP_SERVICES_CACHE": "/tmp/services.php",
+    "APP_PACKAGES_CACHE": "/tmp/packages.php",
+    "APP_ROUTES_CACHE": "/tmp/routes.php"
   }
 }
