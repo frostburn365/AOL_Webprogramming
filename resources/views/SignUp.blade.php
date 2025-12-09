@@ -12,7 +12,7 @@
         <nav class="navbar navbar-expand-lg bg-white shadow-sm py-3">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="Home"> 
-                    <img src="{{ asset('assets/Logo.png.jpg') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top me-2"> 
+                    <img src="{{ asset('assets/Logo.png') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top me-2"> 
                     MindWell 
                 </a> 
 

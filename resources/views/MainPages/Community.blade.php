@@ -4,155 +4,78 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MindWell Community</title>
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
   <style>
-    .sidebar a, .profile-text { color: black }
-    .sidebar-hover:hover {
-      background: #eef2ff;
-      color: #4f46e5;
-    }
-    .active-link {
-      background: #eef2ff;
-      color: #4f46e5 !important;
-    }
-    .profile { color: #4f46e5 !important; }
-
-    .btn-custom-purple {
-        background-color: #4f46e5;
-        border-color: #4f46e5;
-        color: white;
-        transition: background-color 0.3s ease, border-color 0.3s ease;
-    }
-
-    .btn-custom-purple:hover {
-        background-color: #6a5acd; 
-        border-color: #6a5acd;
-        color: white;
-    }
-
-    .btn-custom-purple:focus,
-    .btn-custom-purple:active {
-        background-color: #6a5acd !important;
-        border-color: #6a5acd !important;
-        box-shadow: 0 0 0 0.25rem rgba(123, 104, 238, 0.5);
-    }
+    .sidebar a, .profile-text { color: var(--bs-body-color); text-decoration: none; }
+    .sidebar-hover:hover { background: #eef2ff; color: #4f46e5; }
+    [data-bs-theme="dark"] .sidebar-hover:hover { background: #2d2d30; color: #818cf8 !important; }
+    .active-link { background: #eef2ff; color: #4f46e5 !important; }
+    [data-bs-theme="dark"] .active-link { background: #37373a; color: #818cf8 !important; }
+    .profile-text { color: #4f46e5 !important; }
+    .btn-custom-purple { background-color: #4f46e5; border-color: #4f46e5; color: white; }
+    .btn-custom-purple:hover { background-color: #6a5acd; border-color: #6a5acd; color: white; }
   </style>
+  <script>
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-bs-theme', savedTheme);
+  </script>
 </head>
-
-<body class="bg-light">
-
+<body class="bg-body-tertiary">
   <div class="d-flex">
-
-    {{-- Make/Edit Form --}}
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="CommunityOffcanvas" aria-labelledby="CommunityOffcanvasLabel">
-      <div class="offcanvas-header">
-        {{-- title as ID --}}
-        <h5 class="offcanvas-title" id="CommunityOffcanvasLabel">New Post</h5>
-      </div>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="CommunityOffcanvas">
+      <div class="offcanvas-header"><h5 class="offcanvas-title">New Post</h5></div>
       <div class="offcanvas-body">
-        <p class="text-muted">What's on your mind? Write it down, it's safe here.</p>
-
-        <form id="CommunityForm" method="POST" action="{{ route('community.store') }}">
+        <form method="POST" action="{{ route('community.store') }}">
           @csrf
-          {{-- hidden input will hold the PUT method IF we are editing --}}
-          <input type="hidden" name="_method" value="POST" id="formMethod"> 
-
           <div class="mb-3">
-            <label for="contentInput" class="form-label">Content</label>
-            <textarea class="form-control" id="contentInput" name="content" rows="10" placeholder="Describe your day!"></textarea>
+            <label class="form-label">Content</label>
+            <textarea class="form-control" name="content" rows="10"></textarea>
           </div>
-                
-          <button type="submit" class="btn btn-custom-purple mt-3" id="saveButton">
-            Save Entry
-          </button>
+          <button type="submit" class="btn btn-custom-purple mt-3">Save Entry</button>
         </form>
       </div>
     </div>
 
- 
-
-    <!-- Sidebar -->
-    <div class="d-flex flex-column flex-shrink-0 p-3 bg-white border-end" style="width: 240px; height: 100vh;">
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-body border-end" style="width: 240px; height: 100vh;">
       <a href="#" class="d-flex align-items-center justify-content-center mb-3 text-decoration-none">
-        <img src="{{ asset('assets/Logo.png.jpg') }}" style="height: 1.5em; width: 1.5em" alt="">
+        <img src="{{ asset('assets/Logo.png') }}" style="height: 1.5em; width: 1.5em" alt="">
         <span class="fs-5 fw-semibold ms-2 profile-text">MindWell</span>
       </a>
       <hr>
-
       <ul class="nav nav-pills flex-column mb-auto sidebar">
         <li><a href="/Dashboard" class="nav-link sidebar-hover"><i class="bi bi-grid me-2"></i>Dashboard</a></li>
         <li><a href="/Journal" class="nav-link sidebar-hover"><i class="bi bi-journal-bookmark me-2"></i>Journal</a></li>
         <li><a href="/Community" class="nav-link active-link"><i class="bi bi-people me-2"></i>Community</a></li>
         <li><a href="/Insights" class="nav-link sidebar-hover"><i class="bi bi-bar-chart-line me-2"></i>Insights</a></li>
       </ul>
-
       <hr>
-
       <ul class="nav nav-pills flex-column sidebar">
-        <li><a href="#" class="nav-link sidebar-hover"><i class="bi bi-gear me-2"></i>Settings</a></li>
-        <li><a href="#" class="nav-link sidebar-hover"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+        <li><a href="/settings" class="nav-link sidebar-hover"><i class="bi bi-gear me-2"></i>Settings</a></li>
+        <li>
+           <form method="POST" action="{{ route('Logout') }}">
+            @csrf
+            <button class="nav-link sidebar-hover w-100 text-start border-0 bg-transparent text-danger"><i class="bi bi-box-arrow-right me-2"></i>Logout</button>
+           </form>
+        </li>
       </ul>
     </div>
 
-    <!-- Main Content -->
     <div class="container-fluid p-4">
-
       <div class="d-flex justify-content-between align-items-center mb-4">
         <h4 class="fw-bold">Community</h4>
-        <a class="btn btn-custom-purple" type="button" data-bs-toggle="offcanvas" data-bs-target="#CommunityOffcanvas" aria-controls="CommunityOffcanvas" id="openCommunityButton">
-          <i class="bi bi-plus-lg me-1"></i>New Post
-        </a>
+        <a class="btn btn-custom-purple" data-bs-toggle="offcanvas" data-bs-target="#CommunityOffcanvas"><i class="bi bi-plus-lg me-1"></i>New Post</a>
       </div>
-
-      <!-- Tabs -->
-      <ul class="nav nav-tabs mb-3">
-        <li class="nav-item"><a class="nav-link active" href="#">General</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Exam Stress</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Advice</a></li>
-      </ul>
-
-      <!-- Post Card -->
-      {{-- <div class="card mb-3 shadow-sm">
-        <div class="card-body">
-          <h6 class="fw-semibold"><i class="bi bi-person-circle me-2"></i>Anonymous Fox</h6>
-          <p class="text-muted small mb-2">Anyone else finding it hard to balance social life and studies? Looking for tips!</p>
-          <div class="d-flex gap-3 text-muted small">
-            <span><i class="bi bi-hand-thumbs-up me-1"></i>15</span>
-            <span><i class="bi bi-chat-left-text me-1"></i>1 Comment</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="card mb-3 shadow-sm">
-        <div class="card-body">
-          <h6 class="fw-semibold"><i class="bi bi-person-circle me-2"></i>Anonymous Fox</h6>
-          <p class="text-muted small mb-2">Anyone else finding it hard to balance social life and studies? Looking for tips!</p>
-          <div class="d-flex gap-3 text-muted small">
-            <span><i class="bi bi-hand-thumbs-up me-1"></i>15</span>
-            <span><i class="bi bi-chat-left-text me-1"></i>1 Comment</span>
-          </div>
-        </div>
-      </div> --}}
-
-      {{-- User posted content --}}
       @forEach ($posts as $post)
         <div class="card mb-3 shadow-sm">
           <div class="card-body">
             <h6 class="fw-semibold"><i class="bi bi-person-circle me-2"></i>{{$post->username}}</h6>
             <p class="text-muted small mb-2">{{$post->content}}</p>
-            <div class="d-flex gap-3 text-muted small">
-              <span><i class="bi bi-hand-thumbs-up me-1"></i>15</span>
-              <span><i class="bi bi-chat-left-text me-1"></i>1 Comment</span>
-            </div>
           </div>
         </div>
       @endforeach
     </div>
   </div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
